@@ -1,0 +1,53 @@
+<div class="m-4">
+  <h4 style="text-align: center">Modify a Book</h4>
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="bookForm">
+        <div class="form-group">
+          <label for="txtName">Name</label>
+          <input id="txtName" type="text" class="form-control" formControlName="_name">
+          <div *ngIf="bookForm.controls['_name'].invalid && (bookForm.controls['_name'].touched
+                            || bookForm.controls['_name'].dirty)">
+            <small class="text-danger" *ngIf="bookForm.controls['_name'].errors.required">Book name is
+              required</small>
+            <small class="text-danger" *ngIf="bookForm.controls['_name'].errors.minlength">Book name must be
+              at least 2 char long</small>
+            <small class="text-danger" *ngIf="bookForm.controls['_name'].errors.maxlength">Book name must be
+              at most 20 char long</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="txtAuthor">Author</label>
+          <input id="txtAuthor" type="text" class="form-control" formControlName="_author">
+          <div *ngIf="bookForm.controls['_author'].invalid && (bookForm.controls['_author'].touched
+                            || bookForm.controls['_author'].dirty)">
+            <small class="text-danger" *ngIf="bookForm.controls['_author'].errors.required">Author is
+              required</small>
+            <small class="text-danger" *ngIf="bookForm.controls['_author'].errors.minlength">Author must be
+              at least 2 char long</small>
+            <small class="text-danger" *ngIf="bookForm.controls['_author'].errors.maxlength">Author must be
+              at most 20 char long</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="txtYear">Year</label>
+          <input id="txtYear" type="text" class="form-control" formControlName="_year">
+          <div *ngIf="bookForm.controls['_year'].invalid && (bookForm.controls['_year'].touched
+                            || bookForm.controls['_year'].dirty)">
+            <small class="text-danger" *ngIf="bookForm.controls['_year'].errors.required">Year is
+              required</small>
+            <small class="text-danger" *ngIf="bookForm.controls['_year'].errors.pattern">Year must from 1400 to 2099</small>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div  class="btn-group" role="group" aria-label="Basic mixed styles example" style="margin-top: 20px;">
+            <button type="button" [disabled]="bookForm.invalid" id="btnUpdate" class="btn btn-success" (click)="btnUpdate_click()">Update</button>
+            <button type="button" id="btnCancel" class="btn btn-warning" (click)="btnCancel_click()">Cancel</button>
+            <button type="button" id="btnDelete" class="btn btn-danger" (click)="btnDelete_click()">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <img src="assets/img/book2.jpg" alt="book" class="img-fluid">
+  </div>
+</div>

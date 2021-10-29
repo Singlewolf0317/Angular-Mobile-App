@@ -1,0 +1,23 @@
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h3><i class="bi bi-person-lines-fill"></i> List of Members</h3>
+      <button type="button" id="btnAdd" class="btn btn-dark" (click)="btnAdd_click()">
+        Add a Student
+      </button>
+    </div>
+    <div class="card-body" style="height: 350px; overflow: scroll;">
+      <ul class="list-group">
+        <li *ngFor="let student of students" class="list-group-item list-group-item-action">
+          <a data-role="button" (click)="btnModify_click(student)">
+            <h6>{{student.studentNum}}  {{student.first}} {{student.last}}</h6>
+            Email: {{student.email}}
+          </a>
+
+        </li>
+      </ul>
+    </div>
+
+    <img src="assets/img/p2.jpg" alt="library" class="img-fluid">
+  </div>
+</div>

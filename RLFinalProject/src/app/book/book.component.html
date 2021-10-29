@@ -1,0 +1,32 @@
+<img src="assets/img/books.jpg" alt="books" class="img-fluid">
+<h3 style="text-align: center; margin-top: 10px;"><i class="bi bi-sort-alpha-down"></i> List of Books</h3>
+<form [formGroup]="bookForm" style="height: 40px;">
+  <input type="text" class="form-control" style="width:200px;float: left;height: 30px;margin-left: 40px;" formControlName="_search"/>
+  <button type="button" id="btnSearch" class="btn btn-outline-secondary btn-sm" style="margin-left: 20px;" (click)="btnSearch_click()">
+    <i class="bi bi-search" style="color: black"></i>
+  </button>
+
+
+</form>
+
+  <div style="height:320px;overflow: scroll;">
+
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let book of books" class="list-group-item" style="margin: 0 20px">
+          <div style="float: left;"><i class="bi bi-book" style="font-size: 2em; margin-right: 20px;"></i></div>
+          <div>
+          <a data-role="button" (click)="btnModify_click(book)">
+            <h6><<{{book.name}}>></h6>
+            Author: {{book.author}}<br>
+          </a>
+          </div>
+        </li>
+      </ul>
+  </div>
+  <div style="text-align: center;">
+    <button type="button" id="btnAdd" class="btn btn-dark" style="margin-top: 20px;width: 150px;" (click)="btnAdd_click()">
+      Add a Book
+    </button>
+  </div>
+
+

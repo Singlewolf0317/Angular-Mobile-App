@@ -1,0 +1,43 @@
+<div class="m-4">
+  <h3 style="text-align: center;">Reservation List</h3>
+  <div class="card">
+    <div>
+      <ul class="nav justify-content-center">
+        <li style="margin-top:9px;"><i class="bi bi-sliders"></i></li>
+        <li><a type="button" id="btnA" class="nav-link" (click)="ShowAList()">
+          RoomA
+        </a></li>
+        <li><a type="button" id="btnB" class="nav-link" (click)="ShowBList()">
+          RoomB
+        </a></li>
+        <li><a type="button" id="btnC" class="nav-link" (click)="ShowCList()">
+          RoomC
+        </a></li>
+      </ul>
+    </div>
+    <div class="card-body" style="height: 500px; overflow: scroll;">
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let reservation of reservations" class="list-group-item">
+          <a data-role="button" (click)="btnModify_click(reservation)">
+            <h6>{{reservation.roomNum}}</h6>
+            Booked by: {{reservation.studentNum}}<br>
+            <i class="bi bi-stopwatch" style="color: red;"></i> {{reservation.period}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div style="text-align: center;">
+  <div class="btn-group" role="group" aria-label="Basic example" style="margin-top: 20px;">
+    <button type="button" id="btnAddA" class="btn btn-outline-primary" (click)="btnAdd_click('RoomA')">
+      Book RoomA
+    </button>
+    <button type="button" id="btnAddB" class="btn btn-outline-primary" (click)="btnAdd_click('RoomB')">
+      Book RoomB
+    </button>
+    <button type="button" id="btnAddC" class="btn btn-outline-primary" (click)="btnAdd_click('RoomC')">
+      Book RoomC
+    </button>
+  </div>
+  </div>
+</div>

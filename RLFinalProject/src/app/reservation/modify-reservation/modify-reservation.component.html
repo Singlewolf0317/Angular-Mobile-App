@@ -1,0 +1,51 @@
+<div class="m-4">
+  <div class="card">
+    <div>
+      <h4 style="margin-top:10px;text-align: center;">Modify a Reservation</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="reservationForm">
+        <div class="form-group">
+          <label for="txtRoomNum">Room</label>
+          <p id="txtRoomNum" class="form-control" formControlName="_roomNum">{{whichRoom}}</p>
+        </div>
+
+        <div class="form-group">
+          <label for="txtStudentNum">Student Number</label>
+          <select id="txtStudentNum"  class="form-control" formControlName="_studentNum">
+            <option  *ngFor="let student of students" value="{{student.studentNum}}">{{student.studentNum}}</option>
+          </select>
+          <div *ngIf="reservationForm.controls['_studentNum'].invalid && (reservationForm.controls['_studentNum'].touched
+                            || reservationForm.controls['_studentNum'].dirty)">
+            <small class="text-danger" *ngIf="reservationForm.controls['_studentNum'].errors.required">Student is
+              required</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="txtPeriod">Period</label>
+          <select id="txtPeriod" class="form-control" formControlName="_period" (change)="FindList()">
+            <option value="10:00--12:00">10:00--12:00</option>
+            <option value="12:00--14:00">12:00--14:00</option>
+            <option value="14:00--16:00">14:00--16:00</option>
+            <option value="16:00--18:00">16:00--18:00</option>
+          </select>
+          <div *ngIf="reservationForm.controls['_period'].invalid && (reservationForm.controls['_period'].touched
+                            || reservationForm.controls['_period'].dirty)">
+            <small class="text-danger" *ngIf="reservationForm.controls['_period'].errors.required">Period is
+              required</small>
+            <small class="text-danger" *ngIf="reservationForm.controls['_period'].errors.occupied">The room has booked at that time</small>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div  class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button [disabled]="reservationForm.invalid" type="button" id="btnUpdate" class="btn btn-success" (click)="btnUpdate_click()">Update</button>
+            <button type="button" id="btnCancel" class="btn btn-warning" (click)="btnCancel_click()">Cancel</button>
+            <button type="button" id="btnDelete" class="btn btn-danger" (click)="btnDelete_click()">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <img src="assets/img/p3.jpg" alt="read" class="img-fluid">
+  </div>
+</div>
